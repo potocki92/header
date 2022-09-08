@@ -1,153 +1,198 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway");
 
-:root {
-  --color-1: #2f3240;
-}
-
+/* general */
 body {
-  background-color: #e8eef3;
-  font-family: sans-serif;
+  font-family: "Raleway", sans-serif !important;
 }
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+p {
+  font-size: 20px;
+  color: #484848;
+}
 ul {
   list-style: none;
 }
 
 a {
-  text-decoration: none;
-}
-.container {
-  max-width: 1170px;
-  margin: auto;
-}
-.row {
-  display: flex;
-  flex-wrap: wrap;
-}
-.align-items-center {
-  align-items: center;
-}
-.justify-content-between {
-  justify-content: space-between;
+  text-decoration: none !important;
+  color: white;
 }
 
 /* header */
-.header {
-  background-color: var(--color-1);
-  padding: 12px 0;
-  line-height: 1.5;
-}
 
-.header .logo,
-.header .nav {
-  padding: 0 15px;
-}
-
-.header .logo a {
-  font-size: 30px;
-  color: #ffffff;
-  text-transform: capitalize;
-}
-.header .nav ul li {
-  display: inline-block;
-  margin-left: 40px;
-}
-.header .nav ul li a {
-  display: block;
-  font-size: 16px;
-  text-transform: capitalize;
-  color: #ffffff;
-  padding: 10px 0;
-  transition: all 0.5s ease;
-}
-.header .nav ul li a.active,
-.header .nav ul li a:hover {
-  color: #f3a93d;
-}
-
-.nav-toggler {
-  height: 34px;
-  width: 44px;
-  background-color: #ffffff;
-  border-radius: 4px;
-  cursor: pointer;
-  border: none;
-  display: none;
-  margin-right: 15px;
-}
-
-.nav-toggler:focus {
-  outline: none;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-}
-
-.nav-toggler span {
-  height: 2px;
-  width: 20px;
-  background-color: var(--color-1);
-  display: block;
-  margin: auto;
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.nav-toggler.active span {
-  background-color: transparent;
-}
-
-.nav-toggler span::before,
-.nav-toggler span::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
+.head-nav {
+  position: fixed;
+  z-index: 600;
   width: 100%;
+  font-size: 25px;
+  /* div's (logo and nav-links) positioning into head-nav */
+  display: grid;
+  grid-auto-flow: column;
+  margin-top: 10px;
+}
+
+/* logo */
+
+.logo {
+  margin-left: 20px;
+  padding: 15px;
+  font-weight: bold;
+  color: white;
+}
+
+/* navigation links */
+
+.nav-links {
+  visibility: hidden;
+  padding: 15px;
+  margin-right: 20px;
+  font-weight: bold;
+}
+
+/* navigation links ul */
+
+.nav-links ul {
+  float: right;
+  justify-content: space-between;
+}
+
+.nav-links ul li {
+  display: inline;
+  padding: 5px;
+}
+
+.burger-nav {
+  float: right;
+  visibility: visible;
+}
+.burger-nav div {
+  width: 25px;
+  height: 5px;
+  color: white;
+  margin-right: 5px;
+}
+
+/* screen navigations */
+
+.fa-bars {
+  visibility: visible;
+  color: #ff6363;
+  float: right;
+  padding: 20px;
+  position: fixed;
+  right: 0;
+  z-index: 500;
+  cursor: pointer;
+}
+.screen-nav {
   height: 100%;
-  background-color: var(--color-1);
-  transition: all 0.3s ease;
+  z-index: 500;
+  position: fixed;
+  background-color: #000;
+  opacity: 1;
+  /* start off behind the scenes */
+  right: -285px;
+  -webkit-font-smoothing: antialiased;
 }
 
-.nav-toggler span::before {
-  transform: translateY(-6px);
+.screen-nav {
+  display: block;
 }
 
-.nav-toggler.active span::before {
-  transform: rotate(45deg);
-}
-.nav-toggler span::after {
-  transform: translateY(6px);
+.screen-container {
+  padding-top: 10%;
 }
 
-.nav-toggler.active span::after {
-  transform: rotate(135deg);
+.screen-links {
+  width: 250px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-@media (max-width: 991px) {
-  .nav-toggler {
-    display: block;
-  }
-  .header .nav {
-    width: 100%;
-    padding: 0;
-    max-height: 0px;
-    overflow: hidden;
-    visibility: hidden;
-    transition: all 0.5 ease;
-  }
-  .header .nav.open {
+.screen-links ul {
+  margin-top: 15%;
+  text-align: center;
+  padding-top: 10%;
+}
+
+.screen-links a {
+  color: #ffffff;
+  font-size: 30px;
+  line-height: 2.5;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.screen-links a:hover {
+  color: #ff6363;
+  -webkit-transition: all 0.6s ease-in-out;
+  -o-transition: all 0.6s ease-in-out;
+  -ms-transition: all 0.6s ease-in-out;
+  -moz-transition: all 0.6s ease-in-out;
+  transition: all 0.6s ease-in-out;
+}
+
+/* all section */
+
+.section {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+/* section home */
+
+.home {
+  background: url("https://s3-us-west-2.amazonaws.com/files.bradengelhardt.com/brad-bg-main.jpg")
+    no-repeat;
+  background-size: cover;
+}
+
+/* change size of font from home page */
+.home h1 {
+  font-size: 50px;
+  padding: 1px 1px 5px 5px;
+}
+
+.about-content {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 800px;
+}
+.about p {
+  color: #484848;
+  font-weight: 100;
+  font-size: 17.4px;
+  overflow: hidden;
+}
+
+/* change all title class */
+
+.title {
+  margin-left: 30px;
+  margin-right: 30px;
+  text-align: center;
+  color: #ff6363;
+}
+
+/* media resolution and other changes */
+
+@media screen and (min-width: 1024px) {
+  .nav-links {
     visibility: visible;
   }
-  .header .nav ul {
-    padding: 12px 15px 0;
-    margin-top: 12px;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-  }
-  .header .nav ul li {
-    display: block;
-    margin: 0;
+
+  .fa-bars {
+    visibility: hidden;
   }
 }
