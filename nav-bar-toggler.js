@@ -1,20 +1,37 @@
-const navSlide = () => {
-    const burger = document.querySelector('.fa-bars');
-    const nav = document.querySelector('.screen-nav');
-    const navLinks = document.querySelectorAll('.screen-nav li');
-    const body = document.querySelector('body');
+var navigation_function = function () {
+  $(".fa-bars").click(function () {
+    var size = $(".screen-nav").css("right");
+    if (size == "-285px") {
+      console.log(size);
+      $(".screen-nav").animate(
+        {
+          right: "0px",
+        },
+        300
+      );
+      $("body").animate(
+        {
+          right: "285px",
+        },
+        300
+      );
+    }
+    if (size == "0px") {
+      // Then push them back */
+      $(".screen-nav").animate(
+        {
+          right: "-285px",
+        },
+        300
+      );
+      $("body").animate(
+        {
+          right: "0px",
+        },
+        300
+      );
+    }
+  });
+};
 
-    burger.addEventListener('click', () => {
-        nav.animate(
-            {
-                right: "0px"
-
-            },
-            200
-        );
-
-        // try to change animation nav-bar and visible 
-    })
-}
-
-navSlide();
+navigation_function();
